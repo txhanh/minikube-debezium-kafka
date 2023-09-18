@@ -6,6 +6,7 @@ metadata:
     strimzi.io/use-connector-resources: "true"
 spec:
   version: 3.5.1
+  image: hankxyzt/connect-debezium:latest
   replicas: 1
   bootstrapServers: debezium-cluster-kafka-bootstrap:9092
   config:
@@ -18,12 +19,3 @@ spec:
     config.storage.replication.factor: -1
     offset.storage.replication.factor: -1
     status.storage.replication.factor: -1
-  build:
-    output:
-      type: docker
-      image: 10.106.223.81/debezium-connect-mysql:latest
-    plugins:
-      - name: debezium-mysql-connector
-        artifacts:
-          - type: tgz
-            url: https://repo1.maven.org/maven2/io/debezium/debezium-connector-mysql/2.3.3.Final/debezium-connector-mysql-2.3.3.Final-plugin.tar.gz

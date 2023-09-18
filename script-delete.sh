@@ -1,23 +1,23 @@
 # Create namespace
-kubectl create namespace kafka
+kubectl delete namespace kafka
 # Deploy Strimzi operator
-kubectl create -f strimzi-kafka.yaml -n kafka
+kubectl delete -f strimzi-kafka.yaml -n kafka
 # Create Apache Kafka Cluster
-# kubectl apply -f kafka-persistent-single.yaml -n kafka
+kubectl delete -f kafka-persistent-single.yaml -n kafka
 # Apply Secret
-kubectl apply -f secret.yaml -n kafka
+kubectl delete -f secret.yaml -n kafka
 # Role
-kubectl apply -f role.yaml -n kafka
+kubectl delete -f role.yaml -n kafka
 # Rolebinding
-kubectl apply -f rolebinding.yaml -n kafka
+kubectl delete -f rolebinding.yaml -n kafka
 # Create Apache Kafka Cluster
-# kubectl apply -f kafka.yaml -n kafka
+# kubectl delete -f kafka.yaml -n kafka
 # MYSQL
-kubectl apply -f mysql.yaml -n kafka
+kubectl delete -f mysql.yaml -n kafka
 # Kafka Connect
-kubectl apply -f connect.yaml -n kafka
+kubectl delete -f connect.yaml -n kafka
 # Kafka Connect API
-kubectl apply -f connect-api.yaml -n kafka
+kubectl delete -f connect-api.yaml -n kafka
 # Verify the Deployment
 kubectl run -n kafka -it --rm --image=quay.io/debezium/tooling:1.2  --restart=Never watcher -- kcat -b debezium-cluster-kafka-bootstrap:9092 -C -o beginning -t mysql.inventory.customers
 
