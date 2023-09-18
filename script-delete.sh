@@ -11,7 +11,7 @@ kubectl delete -f role.yaml -n kafka
 # Rolebinding
 kubectl delete -f rolebinding.yaml -n kafka
 # Create Apache Kafka Cluster
-# kubectl delete -f kafka.yaml -n kafka
+kubectl delete -f kafka.yaml -n kafka
 # MYSQL
 kubectl delete -f mysql.yaml -n kafka
 # Kafka Connect
